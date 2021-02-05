@@ -145,7 +145,7 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     android.hidl.base@1.0 \
     ashmemd \
     ashmemd_aidl_interface-cpp \
-    bootctrl.$(TARGET_BOARD_PLATFORM).recovery \
+		android.hardware.boot@1.1.so \
     libashmemd_client \
     libcap \
     libicui18n \
