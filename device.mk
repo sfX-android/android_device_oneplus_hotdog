@@ -6,7 +6,6 @@ LOCAL_PATH := device/oneplus/hotdog
 # define hardware platform
 PRODUCT_PLATFORM := msmnile
 
-#TEST
 # A/B support
 AB_OTA_UPDATER := true
 
@@ -43,8 +42,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl-wrapper.recovery \
     android.hardware.boot@1.0-impl-wrapper \
     android.hardware.boot@1.0-impl.recovery \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery \
+    bootctrl.msmnile \
+    bootctrl.msmnile.recovery \
 
 # Apex libraries
 PRODUCT_HOST_PACKAGES += \
