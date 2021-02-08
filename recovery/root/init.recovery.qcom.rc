@@ -34,6 +34,13 @@ service unified-script /system/bin/unified-script.sh
     oneshot
     seclabel u:r:recovery:s0
 
+service mount-dynamic-rw /system/bin/mount-dynamic-rw.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
 
@@ -48,8 +55,11 @@ on init
 
 om boot
     setprop sys.usb.config adb
+
+    chmod 0777 mount-dynamic-rw.sh
     chmod 0777 /system/bin/unified-script.sh
     start unified-script
+    start mount-dynamic-rw
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
