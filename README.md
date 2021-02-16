@@ -17,7 +17,7 @@ repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.
 Add this to .repo/manifests/twrp-extras.xml
 
 ```xml
-<project name="systemad/android_device_oneplus_hotdog" path="device/oneplus/hotdog" remote="github" revision="android-10" />
+<project name="systemad/android_device_oneplus_hotdog" path="device/oneplus/hotdog" remote="github" revision="android-11" />
 ```
 
 Sync the sources with
@@ -32,7 +32,8 @@ To build, execute these commands in order
 . build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL=C
-lunch omni_hotdog-eng (sometimes you may have to cd into device/oneplus/hotdog and lunch there)
+cd device/oneplus/hotdog
+lunch omni_hotdog-eng
 mka adbd recoveryimage 
 ```
 
