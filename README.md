@@ -3,6 +3,11 @@
 These are personal test builds of mine. In no way do I hold responsibility if it/you messes up your device.
 Proceed at your own risk.
 
+### Note
+Decryption does not currently work at all, this applies to both custom ROM running A10 and A11.
+Android 11 - Decryption, most likely because of keymaster 4.1 and other tree specific things
+Android 10 - Not working, not sure why. I am not on A10 so I cannot test or debug it.
+
 ## Setup repo tool
 Setup repo tool from here https://source.android.com/setup/develop#installing-repo
 
@@ -43,7 +48,7 @@ To test it:
 # To temporarily boot it
 fastboot boot out/target/product/hotdog/recovery.img 
 
-# Since 7T / Pro has a dedicated recovery parition, you can flash the recovery with
+# Since 7T / Pro has a dedicated recovery partition, you can flash the recovery with
 fastboot flash recovery recovery.img
 ```
 
@@ -52,9 +57,9 @@ fastboot flash recovery recovery.img
 - [X] ADB (+ sideload)
 - [X] all important partitions listed in mount/backup lists
 - [X] MTP export
-- [X] decrypt /data (Custom ROM only)
-- [X] Backup to internal/microSD (Custom ROM only)
-- [X] Restore from internal/microSD (Custom ROM only)
+- [ ] decrypt /data - Not working at all (A10/A11)
+- [ ] Backup to internal/microSD - Not working
+- [ ] Restore from internal/microSD - Not working
 - [X] F2FS/EXT4 Support, exFAT/NTFS where supported
 - [X] backup/restore to/from external (USB-OTG) storage
 - [X] update.zip sideload
