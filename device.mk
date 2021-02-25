@@ -50,6 +50,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_HOST_PACKAGES += \
     libandroidicu
 
+PRODUCT_HOST_PACKAGES += \
+	resetprop
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 

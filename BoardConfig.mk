@@ -169,6 +169,7 @@ BOARD_USES_QCOM_FBE_DECRYPTION := true
 
 # Extras
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TW_INCLUDE_RESETPROP := true
 
 # TWRP specific build flags
 TARGET_RECOVERY_QCOM_RTC_FIX := true
