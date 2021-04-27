@@ -208,6 +208,9 @@ TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
 #TW_HAPTICS_TSPDRV := true
 
+# hotdog has an own recovery partition
+TW_HAS_RECOVERY_PARTITION := true
+
 ############################################################################
 # SHRP flags
 ############################################################################
