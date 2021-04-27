@@ -81,7 +81,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/smdcntl7             0640   radio      radio
 /dev/smdcntl8             0640   radio      radio
 /dev/smdcnt_rev0          0640   radio      radio
-/dev/smdcnt_rev1          0640   radio      radio
+/dev/smdcnt_rev1          0640   raio      radio
 /dev/smdcnt_rev2          0640   radio      radio
 /dev/smdcnt_rev3          0640   radio      radio
 /dev/smdcnt_rev4          0640   radio      radio

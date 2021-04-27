@@ -6,7 +6,6 @@ LOCAL_PATH := device/oneplus/hotdog
 # define hardware platform
 PRODUCT_PLATFORM := msmnile
 
-#TEST
 # A/B support
 AB_OTA_UPDATER := true
 
@@ -17,7 +16,8 @@ AB_OTA_PARTITIONS += \
     boot \
     system \
     vendor \
-    vbmeta
+    vbmeta \
+		dtbo
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -47,8 +47,8 @@ PRODUCT_PACKAGES += \
     bootctrl.$(PRODUCT_PLATFORM).recovery \
 
 # Apex libraries
-PRODUCT_HOST_PACKAGES += \
-    libandroidicu
+PRODUCT_COPY_FILES += \
+    $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
 
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -56,7 +56,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
+    fastbootd \
+    resetprop
 
 # qcom decryption
 PRODUCT_PACKAGES_ENG += \
@@ -71,7 +72,7 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES_ENG += \
     tzdata_twrp
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
+#PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=OnePlus7TPro \
     BUILD_PRODUCT=OnePlus7TPro \
     TARGET_DEVICE=OnePlus7TPro
