@@ -280,4 +280,5 @@ SHRP_EXPRESS := true
 # Set this variable when true ONLY (do not use "false" or similiar)
 SHRP_DARK := true
 
-
+# never flash to both slots (dev only - should be outcommented for prod release)
+#SHRP_DEV_FLASH_BOTH_SLOTS := false
