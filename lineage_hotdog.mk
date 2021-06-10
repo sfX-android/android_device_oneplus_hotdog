@@ -37,3 +37,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="OnePlus7TPro_EEA-user 10 QKQ1.190716.003 1910120055 release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
+
+# Enable extendrom
+$(call inherit-product-if-exists, vendor/extendrom/config/common.mk)
