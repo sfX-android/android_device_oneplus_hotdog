@@ -1,0 +1,19 @@
+diff --git a/build/make/tools/releasetools/sign_target_files_apks.py b/build/make/tools/releasetools/sign_target_files_apks.py
+index 839365308a..ca82b1a1b9 100755
+--- a/build/make/tools/releasetools/sign_target_files_apks.py
++++ b/build/make/tools/releasetools/sign_target_files_apks.py
+@@ -692,10 +692,11 @@ def RewriteProps(data):
+       elif key.startswith("ro.") and key.endswith(".build.tags"):
+         value = EditTags(value)
+       elif key == "ro.build.display.id":
+-        # change, eg, "JWR66N dev-keys" to "JWR66N"
++        # change, eg, "JWR66N dev-keys UNOFFICIAL-release" to "JWR66N UNOFFICIAL-release"
+         value = value.split()
+-        if len(value) > 1 and value[-1].endswith("-keys"):
+-          value.pop()
++       for v in value:
++           if v == "dev-keys":
++               value.remove(v)
+         value = " ".join(value)
+       line = key + "=" + value
+     if line != original_line:
