@@ -11,7 +11,7 @@ index 839365308a..ca82b1a1b9 100755
          value = value.split()
 -        if len(value) > 1 and value[-1].endswith("-keys"):
 -          value.pop()
-+       for v in value:
++        for v in value:
 +           if v == "dev-keys":
 +               value.remove(v)
          value = " ".join(value)
