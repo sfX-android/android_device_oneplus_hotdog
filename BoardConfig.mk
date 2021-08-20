@@ -205,9 +205,9 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 #TW_MAX_BRIGHTNESS := 1023
 
 # TWRP Debug Flags
-TARGET_USES_LOGD := true
+#TARGET_USES_LOGD := true
 #TWRP_EVENT_LOGGING := true
-TWRP_INCLUDE_LOGCAT := true
+#TWRP_INCLUDE_LOGCAT := true
 #TW_HAPTICS_TSPDRV := true
 
 # hotdog has an own recovery partition
@@ -273,7 +273,7 @@ SHRP_AB := true
 # SHRP Express, enables on-the-fly theme patching (also persistent) + persistent lock
 # Default (if not set) is not using Express
 # Set this variable when true ONLY (do not use "false" or similiar)
-SHRP_EXPRESS := true
+#SHRP_EXPRESS := true
 
 # SHRP Dark mode, use this flag to have dark theme set by default
 # Default (if not set) is not using DARK mode
@@ -282,3 +282,50 @@ SHRP_DARK := true
 
 # never flash to both slots (dev only - should be outcommented for prod release)
 #SHRP_DEV_FLASH_BOTH_SLOTS := false
+
+# Do not include the SHRP theming system
+# Useful to save space for devices with a smaller recovery partition
+# Default (if not set) is full theming support
+# Set this variable when true ONLY (do not use "false" or similiar)
+#SHRP_LITE := true
+
+# Addon - Substratum Overlay (OMS -Normal- disabler)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_1 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+#INC_IN_REC_ADDON_1 := true
+
+# Addon - Substratum Overlay (OMS -legacy- disabler)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_2 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+#INC_IN_REC_ADDON_2 := true
+
+# Addon - Clear Fingerprint (remove fingerprint lock from system)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+#SHRP_SKIP_DEFAULT_ADDON_3 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+#INC_IN_REC_ADDON_3 := true
+
+# Addon - Force Encryption (remove force encryption from your device)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_4 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+#INC_IN_REC_ADDON_4 := true
+
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store magisk zip into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+#INC_IN_REC_MAGISK := true
