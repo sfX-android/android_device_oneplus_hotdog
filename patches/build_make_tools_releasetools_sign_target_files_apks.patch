@@ -17,3 +17,12 @@ index 839365308a..ca82b1a1b9 100755
          value = " ".join(value)
        line = key + "=" + value
      if line != original_line:
+@@ -747,7 +747,7 @@ def ReplaceOtaKeys(input_tf_zip, output_tf_zip, misc_info):
+
+   mapped_keys = []
+   for k in keylist:
+-    m = re.match(r"^(.*)\.x509\.pem$", k)
++    m = re.match(r"^(.*)$", k)
+     if not m:
+       raise common.ExternalError(
+           "can't parse \"%s\" from META/otakeys.txt" % (k,))
