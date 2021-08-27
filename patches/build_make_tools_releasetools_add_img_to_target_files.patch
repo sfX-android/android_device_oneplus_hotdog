@@ -1,26 +1,27 @@
 diff --git a/build/make/tools/releasetools/add_img_to_target_files.py b/build/make/tools/releasetools/add_img_to_target_files.py
-index 16e023671..e5d73fc5b 100755
+index 16e023671..db0aab0e1 100755
 --- a/build/make/tools/releasetools/add_img_to_target_files.py
 +++ b/build/make/tools/releasetools/add_img_to_target_files.py
 @@ -61,6 +61,9 @@ import common
  import rangelib
  import sparse_img
  
-+# SHRP must be downloaded + AVB hash added BEFORE using it here
-+recovery_file = "/tmp/do_NOT_flash_shrp_latest_NO-AVB-HASH.img"
++# SHRP must be downloaded to this location (AVB hash must be added injected by custom mkbootimg.mk)
++recovery_file = "/tmp/recovery/IMAGES/recovery.img"
 +
  if sys.hexversion < 0x02070000:
    print("Python 2.7 or newer is required.", file=sys.stderr)
    sys.exit(1)
-@@ -817,6 +820,11 @@ def AddImagesToTargetFiles(filename):
+@@ -811,9 +814,10 @@ def AddImagesToTargetFiles(filename):
+ 
+   recovery_image = None
+   if has_recovery:
+-    banner("recovery")
++    banner("overwrite recovery with custom one")
++
+     recovery_image = common.GetBootableImage(
+-        "IMAGES/recovery.img", "recovery.img", OPTIONS.input_tmp, "RECOVERY")
++        "IMAGES/recovery.img", "recovery.img", "/tmp/recovery" , "RECOVERY")
      assert recovery_image, "Failed to create recovery.img."
      partitions['recovery'] = os.path.join(
          OPTIONS.input_tmp, "IMAGES", "recovery.img")
-+
-+    # overwrite with latest SHRP image
-+    banner("overwrite recovery with custom one")
-+    partitions['recovery'] = recovery_file
-+
-     if not os.path.exists(partitions['recovery']):
-       recovery_image.WriteToDir(OPTIONS.input_tmp)
-       if output_zip:
