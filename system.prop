@@ -1,0 +1,2 @@
+# custom OTA server (when not an official build)
+lineage.updater.uri=http://sfxota.binbash.rocks:8009/e-os/a10/api/v1/{device}/{type}/{incr}

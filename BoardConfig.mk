@@ -63,4 +63,15 @@ BOARD_AVB_ALGORITHM := SHA256_RSA2048
 # created by: openssl pkcs8 -in releasekey.pk8 -inform DER -out releasekey.key -nocrypt
 BOARD_AVB_KEY_PATH := user-keys/releasekey.key
 
+# special handling when UNOFFICIAL or CUSTOM build
+CURBTYPE=$(shell echo $$EOS_RELEASE_TYPE)
+ifeq ($(CURBTYPE),UNOFFICIAL)
+# set sfX OTA server
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+endif
+ifeq ($(CURBTYPE),CUSTOM)
+# add custom prebuilt recovery
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
+# set sfX OTA server
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+endif

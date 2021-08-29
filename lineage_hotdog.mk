@@ -38,16 +38,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
-# custom OTA server (when not an official build)
-CURBTYPE=$(shell echo $$EOS_RELEASE_TYPE)
-ifeq ($(CURBTYPE),UNOFFICIAL)
-PRODUCT_PROPERTY_OVERRIDES += \
-    lineage.updater.uri=http://sfxota.binbash.rocks:8009/e-os/a10/api/v1/{device}/{type}/{incr}
-endif
-ifeq ($(CURBTYPE),CUSTOM)
-PRODUCT_PROPERTY_OVERRIDES += \
-    lineage.updater.uri=http://sfxota.binbash.rocks:8009/e-os/a10/api/v1/{device}/{type}/{incr}
-endif
-
 # Enable extendrom
 $(call inherit-product-if-exists, vendor/extendrom/config/common.mk)
