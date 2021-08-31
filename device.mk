@@ -21,8 +21,12 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 AB_OTA_PARTITIONS += \
     odm \
     product \
-    recovery \
     vbmeta_system
+
+# also include recovery in CUSTOM builds
+ifeq ($(CURBTYPE),CUSTOM)
+AB_OTA_PARTITIONS += recovery
+endif
 
 # Audio
 PRODUCT_COPY_FILES += \
