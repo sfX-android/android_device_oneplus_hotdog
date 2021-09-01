@@ -72,6 +72,11 @@ endif
 ifeq ($(CURBTYPE),CUSTOM)
 # add custom prebuilt recovery
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
-# set sfX OTA server
+# set sfX OTA server (diff for root or not rooted)
+ROOTBOOT=$(shell echo $$EXTENDROM_PREROOT_BOOT)
+ifeq ($(ROOTBOOT),true)
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system_rooted.prop
+else
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-endif
+endif # ROOTBOOT
+endif # CUSTOM
