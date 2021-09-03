@@ -23,9 +23,9 @@ AB_OTA_PARTITIONS += \
     product \
     vbmeta_system
 
-# also include recovery in CUSTOM builds
+# do not include recovery on UNOFFICIAL builds but on any other
 CURBTYPE=$(shell echo $$EOS_RELEASE_TYPE)
-ifeq ($(CURBTYPE),CUSTOM)
+ifneq ($(CURBTYPE),UNOFFICIAL)
 AB_OTA_PARTITIONS += recovery
 endif
 
