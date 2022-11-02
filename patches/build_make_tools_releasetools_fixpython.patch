@@ -1,0 +1,14 @@
+diff --git a/tools/releasetools/sign_target_files_apks.py b/tools/releasetools/sign_target_files_apks.py
+index e24beb08d..effbf960d 100755
+--- a/tools/releasetools/sign_target_files_apks.py
++++ b/tools/releasetools/sign_target_files_apks.py
+@@ -745,7 +745,8 @@ def ReplaceOtaKeys(input_tf_zip, output_tf_zip, misc_info):
+     extra_recovery_keys = []
+ 
+   mapped_keys = []
+-  for k in keylist:
++  for kl in keylist:
++    k = kl.decode('ISO-8859-1')
+     m = re.match(r"^(.*)$", k)
+     if not m:
+       raise common.ExternalError(
