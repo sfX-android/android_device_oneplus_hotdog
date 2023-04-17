@@ -15,7 +15,7 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := hotdogv2
+PRODUCT_RELEASE_NAME := hotdog
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
