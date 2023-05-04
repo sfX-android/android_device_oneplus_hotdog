@@ -80,3 +80,5 @@ PRODUCT_PACKAGES_ENG += \
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/security/oneplus \
     $(LOCAL_PATH)/security/pixelexperience \
+
+PRODUCT_BUILD_RECOVERY_IMAGE := true

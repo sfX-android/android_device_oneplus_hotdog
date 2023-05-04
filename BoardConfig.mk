@@ -56,10 +56,12 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.usbcontroller=a600000.dwc3 \
     lpm_levels.sleep_disabled=1 \
     msm_rtb.filter=0x237 \
-    firmware_class.path=/vendor/firmware_mnt/image \
     service_locator.enable=1 \
     swiotlb=2048 \
-    video=vfb:640x400,bpp=32,memsize=3072000
+    video=vfb:640x400,bpp=32,memsize=3072000\
+
+#    firmware_class.path=/firmware/image/ \
+
 
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
@@ -85,6 +87,11 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+
+
+# https://source.android.com/docs/core/architecture/partitions/generic-boot#combinations
+BOARD_USES_RECOVERY_AS_BOOT :=
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT :=
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
@@ -146,15 +153,17 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 TARGET_USES_MKE2FS := true
 
 # Encryption
-PLATFORM_VERSION := 127
+PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 PLATFORM_SECURITY_PATCH := 2033-12-31
 VENDOR_SECURITY_PATCH := 2023-12-31
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
+TW_EXCLUDE_ENCRYPTED_BACKUPS := false
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
+
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # Extras
@@ -171,7 +180,6 @@ TW_DEFAULT_BRIGHTNESS := 420
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
 TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 TW_EXCLUDE_TWRPAPP := true
 TW_EXTRA_LANGUAGES := true
 TW_HAS_EDL_MODE := true
@@ -201,5 +209,8 @@ TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
-TW_EXCLUDE_ENCRYPTED_BACKUPS := false
-TW_SCREEN_BLANK_ON_BOOT := true
+
+# required as otherwise touch is not working at all!
+TW_NO_SCREEN_BLANK := true
+#last resort if TW_NO_SCREEN_BLANK is not working:
+#TW_NO_SCREEN_TIMEOUT := true
