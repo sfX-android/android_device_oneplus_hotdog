@@ -18,14 +18,13 @@ on init
     write /config/usb_gadget/g1/os_desc/use 1
     write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
     write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
+
+on early-fs
     setprop sys.usb.configfs 1
-    setprop sys.usb.config "mtp,adb"
-    #start adbd
-    setprop sys.usb.state none
 
 on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"
-    #stop adbd
+    stop adbd
     setprop sys.usb.ffs.ready 0
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
@@ -46,7 +45,7 @@ on property:init.svc.adbd=stopped
     setprop sys.usb.ffs.ready 0
 
 on property:sys.usb.config=adb && property:sys.usb.configfs=1
-    start adbd
+    setprop sys.usb.config "mtp,adb"
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
