@@ -47,6 +47,9 @@ on init
     # Create location for fs_mgr to store abbreviated output from filesystem
     # checker programs.
     mkdir /dev/fscklogs 0770 root system
+    # debug decrypt:
+    #setprop prepdecrypt.setpatch true
+    #setprop prepdecrypt.loglevel 2
 
 on boot
     setprop sys.usb.config adb
